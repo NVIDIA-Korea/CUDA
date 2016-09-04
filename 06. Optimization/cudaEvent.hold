@@ -1,0 +1,8 @@
+// CUDA Event Create to estimate elased time
+cudaEvent_t start, stop;
+cudaeventRecord(start, 0);
+cudaEventRecord(stop, 0);
+cudaEventSynchronize(stop);
+
+cudaEventElapsedTime(&elapsed_gpu, start, stop);
+printf("SGEMM CUDA Elapsed time: %f ms\n", elapsed_gpu);

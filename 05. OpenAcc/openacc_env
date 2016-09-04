@@ -1,0 +1,4 @@
+export PATH='/usr/local/gcc-5.1/bin':$PATH
+export LD_LIBRARY_PATH='/usr/local/gcc-5.1/lib64':$LD_LIBRARY_PATH
+export LIBRARY_PATH='/usr/local/gcc-5.1/lib64':LIBRARY_PATH
+export CPLUS_INCLUDE_PATH='/usr/local/gcc-5.1/include/c++/5.1':$CPLUS_INCLUDE_PATH
