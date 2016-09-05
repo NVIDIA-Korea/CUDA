@@ -1,5 +1,6 @@
 
 #include <stdio.h>
+#include <openacc.h>
 
 /* matrix-sum-acc.c */
 #define SIZE 1000
@@ -18,10 +19,23 @@ int main() {
           c[i][j] = 0.0f;
       }
     }
-
-    // Compute matrix multiply
-    #pragma acc kernel
+    
+    // Compute matrix multiply using acc 1
+    #pragma acc kernels
     for (i = 0; i < SIZE; ++i) {
+      for (j = 0; j < SIZE; ++j) {
+        //for (k = 0; k < SIZE; ++k) {
+        //  c[i][j] = a[i][k] * b[k][j];
+        //}
+        c[i][j] = a[i][j] + b[i][j];
+      }
+    }
+
+    // Compute matrix multiply using acc 2
+    #pragma acc kernels
+    #pragma acc loop independent gang(512)
+    for (i = 0; i < SIZE; ++i) {
+      #pragma acc loop independent gang(512)
       for (j = 0; j < SIZE; ++j) {
         //for (k = 0; k < SIZE; ++k) {
         //  c[i][j] = a[i][k] * b[k][j];
