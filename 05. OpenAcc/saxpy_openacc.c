@@ -5,7 +5,7 @@
 
 void saxpy_parallel(int n, float a, float *x, float *y)
 {
-    #pragma acc kernel
+    #pragma acc kernels
     for (int i = 0; i < n; ++i)
         y[i] = a*x[i] + y[i];
 }
@@ -18,7 +18,7 @@ int main(int argc, char **argv)
     x = (float*)malloc(n*sizeof(float));
     y = (float*)malloc(n*sizeof(float));
 
-    #pragma acc kernels
+    
     for( i = 0; i < n; i++)
     {
         x[i] = 0.5f * i;
