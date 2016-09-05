@@ -11,8 +11,7 @@ void stencil_sum(float* p_out, float* p_in, int* p_filter, int n_filter_size, in
             for (int i = 0; i < n_filter_size; i++) {
                 int col_filter = p_filter[i*2 + 0];
                 int row_filter = p_filter[i*2 + 1];
-                col_filter = 0;
-                row_filter = 1;
+                
                 int input_idx = n_width * (row + row_filter) + col + col_filter;
                     
                 if ((row + row_filter >= 0 && row + row_filter < n_height) && 
