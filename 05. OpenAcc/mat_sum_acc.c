@@ -21,7 +21,7 @@ int main() {
     }
 
     // Compute matrix multiply
-    #pragma acc kernel
+    #pragma acc kernels
     for (i = 0; i < SIZE; ++i) {
       for (j = 0; j < SIZE; ++j) {
         //for (k = 0; k < SIZE; ++k) {
