@@ -1,5 +1,5 @@
 
-CC=gcc
+CC=g++
 NVCC=nvcc
 CCFLAG=-Wall
 
