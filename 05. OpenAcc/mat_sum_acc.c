@@ -1,5 +1,6 @@
 
 #include <stdio.h>
+#include "openacc.h"
 
 /* matrix-sum-acc.c */
 #define SIZE 1000
