@@ -11,8 +11,8 @@ vector_copy: vector_copy.cc
 buffer_copy_iter: buffer_copy_iter.cc
 	$(CC) $(CCFLAG) buffer_copy_iter.cc -o buffer_copy_iter
     
-buffer_alloc: buffer_alloc.cc
-	$(CC) $(CCFLAG) buffer_alloc.cc -o buffer_alloc
+buffer_alloc: buffer_alloc.cu
+	$(NVCC) buffer_alloc.cu -o buffer_alloc
     
 cuda_memcpy: cuda_memcpy.cu
 	$(NVCC) cuda_memcpy.cu -o cuda_memcpy
