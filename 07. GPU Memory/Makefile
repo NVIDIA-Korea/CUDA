@@ -3,7 +3,11 @@ CC = gcc
 CC_OPTS = -I/usr/local/cuda/include -L/usr/local/cuda/lib64 -lcudart
 
 NVCC = nvcc
-NVCC_OPTS = --ptxas-options=--verbose -gencode=arch=compute_35,code=sm_35 -I/usr/local/cuda/samples/common/inc
+NVCC_OPTS = --ptxas-options=--verbose \
+            -gencode arch=compute_35,code=sm_35 \
+            -gencode arch=compute_60,code=sm_60 \
+            -gencode arch=compute_61,code=sm_61
+            -I/usr/local/cuda/samples/common/inc
 
 all: test_shared test_texture
 
