@@ -4,10 +4,8 @@ CC_OPTS = -I/usr/local/cuda/include -L/usr/local/cuda/lib64 -lcudart
 
 NVCC = nvcc
 NVCC_OPTS = --ptxas-options=--verbose \
-            -gencode arch=compute_35,code=sm_35 \
-            -gencode arch=compute_60,code=sm_60 \
-            -gencode arch=compute_61,code=sm_61
-            -I/usr/local/cuda/samples/common/inc
+			-gencode arch=compute_30,code=sm_30 \
+			-I/usr/local/cuda/samples/common/inc
 
 all: test_shared test_texture
 
@@ -17,10 +15,7 @@ test_shared: test_shared.o
 test_texture: test_texture.o 
 	$(NVCC) $(NVCC_OPTS) test_texture.o -o test_texture
     
-    
-    
-    
-test_shared.o: test_shared.cu sgemm.cuh
+test_shared.o: test_shared.cu sgemm_shared.cu sgemm.cu sgemm.cuh
 	$(NVCC) $(NVCC_OPTS) test_shared.cu -c test_shared.o
 
 test_texture.o: sgemm_texture_reference.cu sgemm_texture_object.cu test_texture.cu sgemm.cuh
