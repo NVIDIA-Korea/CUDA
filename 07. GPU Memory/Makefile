@@ -21,9 +21,8 @@ test_shared.o: test_shared.cu sgemm_shared.cu sgemm.cu sgemm.cuh
 test_texture.o: sgemm_texture_reference.cu sgemm_texture_object.cu test_texture.cu sgemm.cuh
 	$(NVCC) $(NVCC_OPTS) test_texture.cu -c test_texture.o
 
-       
 constant: constant.cu
-	$(NVCC) constant.cu -c constant 
+	$(NVCC) $(NVCC_OPTS) constant.cu -o constant 
     
 clean:
 	rm *.o
